@@ -104,7 +104,7 @@ def sample_pagerank(corpus, damping_factor, n):
     # Normalize the page_rank counts to sum to 1
     pagerank_percentages = {}
     for p in pagerank:
-        pagerank_percentages[page] = pagerank[page] / n
+        pagerank_percentages[p] = pagerank[p] / n
     
     return pagerank_percentages
 
