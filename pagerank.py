@@ -112,9 +112,9 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    pagerank = {}
     corpus_len = len(corpus)
 
+    pagerank = {}
     for page in corpus:
         pagerank[page] = 1 / corpus_len
     
@@ -127,7 +127,9 @@ def iterate_pagerank(corpus, damping_factor):
             for p in corpus:
                 if corpus[p]:
                     if page in corpus[p]:
-                        total += damping_factor * (pagerank[p] / len(corpus[p]))
+                        total += damping_factor * (
+                            pagerank[p] / len(corpus[p])
+                        )
                 else:
                     total += damping_factor * (pagerank[p] / corpus_len)
             new_pagerank[page] = total
