@@ -125,9 +125,10 @@ def iterate_pagerank(corpus, damping_factor):
         for page in corpus:
             total = (1 - damping_factor) / corpus_len
             for p in corpus:
-                if page in corpus[p]:
-                    total += damping_factor * (pagerank[p] / len(corpus[p]))
-                if not corpus[p]:
+                if corpus[p]:
+                    if page in corpus[p]:
+                        total += damping_factor * (pagerank[p] / len(corpus[p]))
+                else:
                     total += damping_factor * (pagerank[p] / corpus_len)
             new_pagerank[page] = total
         
