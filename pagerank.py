@@ -114,7 +114,6 @@ def iterate_pagerank(corpus, damping_factor):
     """
     corpus_len = len(corpus)
 
-
     pagerank = {}
     for page in corpus:
         pagerank[page] = 1 / corpus_len
