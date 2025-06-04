@@ -66,7 +66,7 @@ def transition_model(corpus, page, damping_factor):
     if corpus[page]:
         links = corpus[page]
     else:
-        link = corpus.keys()
+        links = corpus.keys()
 
     for p in corpus:
         if p in links:
