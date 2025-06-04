@@ -139,11 +139,10 @@ def iterate_pagerank(corpus, damping_factor):
                 break
         
         if next:
-            return new_pagerank
+            break
         pagerank = new_pagerank.copy()
-        
 
-
+    return new_pagerank   
 
 if __name__ == "__main__":
     main()
