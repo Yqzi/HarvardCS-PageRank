@@ -73,9 +73,6 @@ def transition_model(corpus, page, damping_factor):
             rank_map[p] += damping_factor / len(links)
 
     return rank_map
-    
-
-
 
 
 def sample_pagerank(corpus, damping_factor, n):
