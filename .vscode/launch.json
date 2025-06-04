@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: pagerank",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/pagerank.py",
+            "args": ["corpus0"]
+        }
+    ]
+}
