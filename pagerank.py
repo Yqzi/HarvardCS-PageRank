@@ -97,16 +97,10 @@ def sample_pagerank(corpus, damping_factor, n):
         pagerank[page] += 1
 
         sample = transition_model(corpus, page, damping_factor)
-        pages = list(sample.keys())
-        weights = list(sample.values())
-        page = random.choices(pages, weights)[0]
+        page = random.choices(list(sample.keys()), list(sample.values()))[0]
     
     # Normalize the page_rank counts to sum to 1
-    pagerank_percentages = {}
-    for p in pagerank:
-        pagerank_percentages[p] = pagerank[p] / n
-    
-    return pagerank_percentages
+    return {page: count / n for page, count in pagerank.items()}
 
 
 def iterate_pagerank(corpus, damping_factor):
@@ -132,9 +126,9 @@ def iterate_pagerank(corpus, damping_factor):
             total = (1 - damping_factor) / corpus_len
             for p in corpus:
                 if page in corpus[p]:
-                    total += damping_factor * (new_pagerank[p] / len(corpus[p]))
+                    total += damping_factor * (pagerank[p] / len(corpus[p]))
                 else:
-                    total += damping_factor * (new_pagerank[p] / corpus_len)
+                    total += damping_factor * (pagerank[p] / corpus_len)
             new_pagerank[page] = total
         
         next = True
@@ -142,6 +136,7 @@ def iterate_pagerank(corpus, damping_factor):
             diff = abs(new_pagerank[p] - pagerank[p])
             if diff >= threshold:
                 next = False
+                break
         
         if next:
             return new_pagerank
